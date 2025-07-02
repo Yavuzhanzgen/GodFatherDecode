@@ -11,11 +11,11 @@ def decrypt(ciphertext_b64):
     pad_len = decrypted[-1]
     return decrypted[:-pad_len].decode('utf-8')
 
-print("Sifreli Base64 metni girin (cikmak icin 'exit' yazin):")
+print("Sifreli Base64 metni girin (cikmak icin 'q' yazin):")
 
 while True:
     s = input("> ")
-    if s.lower() == 'exit':
+    if s.lower() == 'q':
         break
     try:
         sonuc = decrypt(s)
