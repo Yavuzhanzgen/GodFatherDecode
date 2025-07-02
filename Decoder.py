@@ -3,11 +3,14 @@ from Crypto.Cipher import AES
 
 def decrypt(ciphertext_b64):
     cipherbytes = b64decode(ciphertext_b64)
+    key = b'B9M80O2RAK1VRJNV'
+    
     init_vector = cipherbytes[:16]
     messagebytes = cipherbytes[16:]
-    key = b'B9M80O2RAK1VRJNV'
+    
     cipher = AES.new(key, AES.MODE_CBC, init_vector)
     decrypted = cipher.decrypt(messagebytes)
+    
     pad_len = decrypted[-1]
     return decrypted[:-pad_len].decode('utf-8')
 
@@ -20,5 +23,6 @@ while True:
     try:
         sonuc = decrypt(s)
         print(f"Cozulen metin: {sonuc}")
+        
     except Exception as e:
         print(f"Cozulemedi: {e}")
